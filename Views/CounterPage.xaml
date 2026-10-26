@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.Views.CounterPage"
+             xmlns:models="clr-namespace:Counter.Models"
+             x:DataType="models:Counter"
+             Title="{Binding Name}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding DeleteButtonText}"
+                     Clicked="DeleteButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid ColumnDefinitions="*"
+          RowDefinitions="60*,20*,20*">
+        
+        <StackLayout Orientation="Vertical" 
+                     VerticalOptions="Center" 
+                     HorizontalOptions="Center">
+            <Label x:Name="CountLabel" 
+                   Text="{Binding Count}" 
+                   TextColor="{Binding CounterColor}" 
+                   FontSize="100" 
+                   HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding CountOrigin}" 
+                   FontSize="30" 
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" 
+                     Grid.Row="1" 
+                     VerticalOptions="Center" 
+                     HorizontalOptions="Center" 
+                     Spacing="20">
+            <Button Text="{Binding ResetButtonText}" 
+                    Clicked="ResetButton_Clicked"
+                    FontSize="70"
+                    WidthRequest="100"
+                    HeightRequest="100"/>
+
+            <Button Text="{Binding DecrementButtonText}"
+                    Clicked="DecrementButton_Clicked"
+                    FontSize="70"
+                    WidthRequest="100"
+                    HeightRequest="100"/>
+
+            <Button Text="{Binding IncrementButtonText}" 
+                    Clicked="IncrementButton_Clicked"
+                    FontSize="70"
+                    WidthRequest="100"
+                    HeightRequest="100"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" 
+                     Grid.Row="2" 
+                     VerticalOptions="Center" 
+                     HorizontalOptions="Center" 
+                     Spacing="20">
+            <Slider Minimum="0"
+                    Maximum="255"
+                    WidthRequest="340"
+                    ThumbColor="Red"
+                    MinimumTrackColor="Red"
+                    x:Name="RedSlider"
+                    ValueChanged="ColorSlider_ValueChanged"/>
+
+            <Slider Minimum="0"
+                    Maximum="255"
+                    WidthRequest="340"
+                    ThumbColor="Green"
+                    MinimumTrackColor="Green"
+                    x:Name="GreenSlider"
+                    ValueChanged="ColorSlider_ValueChanged"/>
+
+            <Slider Minimum="0"
+                    Maximum="255"
+                    WidthRequest="340"
+                    ThumbColor="Blue"
+                    MinimumTrackColor="Blue"
+                    x:Name="BlueSlider"
+                    ValueChanged="ColorSlider_ValueChanged"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.Views.AddCounterPage"
+             xmlns:models="clr-namespace:Counter.Models"
+             x:DataType="models:AddCounter"
+             Title="Counter Creator">
+    <ContentPage.BindingContext>
+        <models:AddCounter/>
+    </ContentPage.BindingContext>
+    
+    <Grid ColumnDefinitions="*,*"
+          RowDefinitions="auto,auto,auto,auto,auto"
+          RowSpacing="100"
+          ColumnSpacing="50"
+          Padding="20">
+
+        <Label Text="{Binding IdText}"
+               FontSize="Medium"
+               Grid.Column="0"
+               Grid.Row="0"/>
+
+        <Entry x:Name="IdEntry"
+               Keyboard="Numeric"
+               IsEnabled="False"
+               FontSize="Medium"
+               Grid.Column="1"
+               Grid.Row="0"/>
+
+        <Label Text="{Binding NameText}"
+               FontSize="Medium"
+               Grid.Column="0"
+               Grid.Row="1"/>
+
+        <Entry x:Name="NameEntry"
+               FontSize="Medium"
+               Keyboard="Text"
+               Grid.Column="1"
+               Grid.Row="1"/>
+
+        <Label Text="{Binding CountOriginText}"
+               FontSize="Medium"
+               Grid.Column="0"
+               Grid.Row="2"/>
+
+        <Entry x:Name="CountOriginEntry"
+               FontSize="Medium"
+               Keyboard="Numeric"
+               Grid.Column="1"
+               Grid.Row="2"
+               TextChanged="NumericEntry_TextChanged"/>
+
+        <Label Text="{Binding ColorText}"
+               FontSize="Medium"
+               Grid.Column="0"
+               Grid.Row="3"/>
+
+        <Grid x:Name="SliderGrid"
+              Grid.Column="1"
+              Grid.Row="3"
+              ColumnDefinitions="*,*,*"
+              RowDefinitions="*,*"
+              ColumnSpacing="20"
+              Background="Black">
+
+            <Label Text="{Binding RedSliderText}"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   HorizontalOptions="Center"
+                   TextColor="Red"
+                   FontAttributes="Bold"/>
+            
+            <Label Text="{Binding GreenSliderText}"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   HorizontalOptions="Center"
+                   TextColor="Green"
+                   FontAttributes="Bold"/>
+            
+            <Label Text="{Binding BlueSliderText}"
+                   Grid.Column="2"
+                   Grid.Row="0"
+                   HorizontalOptions="Center"
+                   TextColor="Blue"
+                   FontAttributes="Bold"/>
+
+            <Slider Minimum="0"
+                    Maximum="255"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    ThumbColor="Red"
+                    MinimumTrackColor="Red"
+                    x:Name="RedSlider"
+                    ValueChanged="ColorSlider_ValueChanged"/>
+            
+            <Slider Minimum="0"
+                    Maximum="255"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    ThumbColor="Green"
+                    MinimumTrackColor="Green"
+                    x:Name="GreenSlider"
+                    ValueChanged="ColorSlider_ValueChanged"/>
+            
+            <Slider Minimum="0"
+                    Maximum="255"
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    ThumbColor="Blue"
+                    MinimumTrackColor="Blue"
+                    x:Name="BlueSlider"
+                    ValueChanged="ColorSlider_ValueChanged"/>
+        </Grid>
+
+        <Button Text="{Binding ReturnButtonText}"
+                FontSize="Medium"
+                Grid.Column="0"
+                Grid.Row="4"
+                Clicked="ReturnButton_Clicked"/>
+
+        <Button Text="{Binding SaveButtonText}"
+                FontSize="Medium"
+                Grid.Column="1"
+                Grid.Row="4"
+                Clicked="SaveButton_Clicked"/>
+
+    </Grid>
+</ContentPage>

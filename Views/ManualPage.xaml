@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.Views.ManualPage"
+             xmlns:models="clr-namespace:Counter.Models"
+             x:DataType="models:Manual"
+             Title="Manual">
+    <ContentPage.BindingContext>
+        <models:Manual/>
+    </ContentPage.BindingContext>
+
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout>
+            <Label Text="{Binding CreatingHeader}"
+                   FontSize="Large"/>
+            <Label Text="{Binding CreatingInstruction1}"
+                   FontSize="Medium"/>
+            <Label Text="{Binding CreatingInstruction2}"
+                   FontSize="Medium"/>
+
+            <Label Text="{Binding UsingHeader}"
+                   FontSize="Large"/>
+            <Label Text="{Binding UsingInstruction1}"
+                   FontSize="Medium"/>
+            <Label Text="{Binding UsingInstruction2}"
+                   FontSize="Medium"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

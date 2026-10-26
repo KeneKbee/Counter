@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.Views.CounterListPage"
+             xmlns:models="clr-namespace:Counter.Models"
+             x:DataType="models:CounterList"
+             Title="Counter List">
+    <ContentPage.BindingContext>
+        <models:CounterList/>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding AddCounterButtonText}"
+                     Clicked="AddCounterButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="10"
+                             Padding="0,0,0,50">
+            <Label Text="{Binding HeadingText}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="Header"/>
+
+            <Label x:Name="SubHeadingText"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="Medium"/>
+
+            <CollectionView x:Name="CounterCollection"
+                            ItemsSource="{Binding CounterCollection}"
+                            SelectionMode="Single"
+                            SelectionChanged="CounterCollection_SelectionChanged">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Counter">
+                        <Border>
+                            <Grid ColumnDefinitions="*,*" 
+                                  RowDefinitions="*,*" 
+                                  Padding="30">
+                                <Label Text="{Binding Name}"
+                                       TextColor="{Binding CounterColor}"
+                                       FontSize="20"/>
+
+                                <Label Text="{Binding Id}"
+                                       Grid.Row="1"
+                                       FontSize="20"/>
+
+                                <Label Text="{Binding Count}"
+                                       Grid.Column="1"
+                                       Grid.RowSpan="2"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       FontSize="50"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <Button Text="{Binding AddCounterButtonText}"
+                    Clicked="AddCounterButton_Clicked"
+                    WidthRequest="400"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
