@@ -16,5 +16,7 @@ class AddCounter
     public string EmptyCountOriginErrorText => "You must specify the count origin of your counter!";
     public string InvalidCountOriginValueErrorText => "You provided an illegal value for count origin of your counter!";
 
+    public char[] IllegalNameChars => Path.GetInvalidFileNameChars();
+
     public Color SlidersColor { get; set; } = Color.FromRgb(0, 0, 0);
 }

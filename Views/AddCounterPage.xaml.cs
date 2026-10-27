@@ -73,6 +73,17 @@ public partial class AddCounterPage : ContentPage
         }
     }
 
+    private void NameEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        char[] illegalChars = ((Models.AddCounter)BindingContext).IllegalNameChars;
+        string text = e.NewTextValue;
+        if(sender is Entry entry)
+        {
+            text = new string(text.Where(c => !illegalChars.Contains(c)).ToArray());
+            entry.Text = text;
+        }
+    }
+
     private void NumericEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
         string text = e.NewTextValue;

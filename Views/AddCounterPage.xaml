@@ -36,7 +36,8 @@
                FontSize="Medium"
                Keyboard="Text"
                Grid.Column="1"
-               Grid.Row="1"/>
+               Grid.Row="1"
+               TextChanged="NameEntry_TextChanged"/>
 
         <Label Text="{Binding CountOriginText}"
                FontSize="Medium"
