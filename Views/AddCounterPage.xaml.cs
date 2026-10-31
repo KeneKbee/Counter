@@ -1,6 +1,6 @@
 namespace Counter.Views;
 
-[QueryProperty(nameof(NewCounterId), "NewCounterId")]
+[QueryProperty(nameof(NewCounterId), nameof(NewCounterId))]
 public partial class AddCounterPage : ContentPage
 {
     public int NewCounterId { set { IdEntry.Text = value.ToString(); } }

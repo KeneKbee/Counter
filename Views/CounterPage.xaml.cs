@@ -1,6 +1,6 @@
 namespace Counter.Views;
 
-[QueryProperty(nameof(Filename), "Filename")]
+[QueryProperty(nameof(Filename), nameof(Filename))]
 public partial class CounterPage : ContentPage
 {
     public string Filename { set => LoadCounter(value); }
