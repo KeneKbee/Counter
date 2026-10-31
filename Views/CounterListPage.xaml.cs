@@ -15,10 +15,10 @@ public partial class CounterListPage : ContentPage
 
     private void UpdateUI()
     {
-        if(BindingContext is Models.CounterList model)
+        if(BindingContext is Models.CounterList counterListModel)
         {
-            model.LoadCounters();
-            SubHeadingText.Text = model.GetSubHeadingText();
+            counterListModel.LoadCounters();
+            SubHeadingText.Text = counterListModel.GetSubHeadingText();
         }
     }
 
@@ -35,10 +35,10 @@ public partial class CounterListPage : ContentPage
 
     private async void AddCounterButton_Clicked(object sender, EventArgs e)
     {
-        if(BindingContext is Models.CounterList model)
+        if(BindingContext is Models.CounterList counterListModel)
         {
-            List<Models.Counter> CounterList = model.CounterCollection.ToList();
-            int newCounterId = CounterList.Count > 0 ? CounterList.Last().Id + 1 : 0;
+            List<Models.Counter> counterList = counterListModel.CounterCollection.ToList();
+            int newCounterId = counterList.Count > 0 ? counterList.Last().Id + 1 : 0;
             await Shell.Current.GoToAsync($"{nameof(AddCounterPage)}?{nameof(AddCounterPage.NewCounterId)}={newCounterId}");
         }
     }

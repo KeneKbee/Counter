@@ -58,16 +58,16 @@ public partial class CounterPage : ContentPage
         UpdateCounterCount();
     }
 
-    private async void DeleteButton_Clicked(Object sender, EventArgs e)
+    private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.Counter counter)
+        if (BindingContext is Models.Counter counterModel)
         {
-            string counterName = counter.Name;
+            string counterName = counterModel.Name;
             bool shouldFileBeDeleted = await DisplayAlert($"Deletion of \"{counterName}\"", $"Warning!\nDeleting \"{counterName}\" cannot be reversed!\nDo you wish to proceed?", "Proceed", "Cancel");
 
             if (shouldFileBeDeleted)
             {
-                counter.Delete();
+                counterModel.Delete();
                 await Shell.Current.GoToAsync("..");
             }
         }

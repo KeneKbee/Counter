@@ -13,7 +13,7 @@ public partial class AddCounterPage : ContentPage
     {
         List<string> errors = new();
 
-        if(BindingContext is Models.AddCounter model)
+        if(BindingContext is Models.AddCounter addCounterModel)
         {
             bool isNameEmpty = string.IsNullOrWhiteSpace(NameEntry.Text);
             bool isCountOriginEmpty = string.IsNullOrEmpty(CountOriginEntry.Text);
@@ -21,18 +21,18 @@ public partial class AddCounterPage : ContentPage
             
             if (isNameEmpty)
             {
-                errors.Add(model.EmptyNameErrorText);
+                errors.Add(addCounterModel.EmptyNameErrorText);
             }
 
             if (isCountOriginEmpty)
             {
-                errors.Add(model.EmptyCountOriginErrorText);
+                errors.Add(addCounterModel.EmptyCountOriginErrorText);
             }
 
             
             if (!isCountOriginValid && !isCountOriginEmpty)
             {
-                errors.Add(model.InvalidCountOriginValueErrorText);
+                errors.Add(addCounterModel.InvalidCountOriginValueErrorText);
             }
         }
 
@@ -65,11 +65,11 @@ public partial class AddCounterPage : ContentPage
 
     private void ColorSlider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
-        if(BindingContext is Models.AddCounter model)
+        if(BindingContext is Models.AddCounter addCounterModel)
         {
-            model.SlidersColor = Color.FromRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value);
+            addCounterModel.SlidersColor = Color.FromRgb((int)RedSlider.Value, (int)GreenSlider.Value, (int)BlueSlider.Value);
 
-            SliderGrid.Background = model.SlidersColor;
+            SliderGrid.Background = addCounterModel.SlidersColor;
         }
     }
 
